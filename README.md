@@ -9,7 +9,20 @@ This flake builds Dagger from source using Go modules.
 
 [![What is Dagger](./dagger-logo.png)](https://dagger.io)
 
-> Define software delivery workflows and dev environments with reusable components — including LLMs — and run them anywhere. Built by the creators of Docker. (Solomon Hyke)
+> Define software delivery workflows and dev environments with reusable components — including LLMs — and run them anywhere. Built by the creators of Docker. ([Solomon Hykes](https://www.linkedin.com/in/solomonhykes/)👏)
+
+## Disclaimer
+
+This flake is not an official Dagger distribution. For official releases, documentation, and support, please visit the Dagger website.
+[dagger: Package may violate trademark policy](https://github.com/NixOS/nixpkgs/issues/260848)
+
+> [The Reason](https://github.com/NixOS/nixpkgs/issues/260848#issuecomment-1764900162)  
+> Thank you all. Just to summarize for future reference:  
+>
+> * There’s no need to avoid the software for legal reasons: it’s OSI licensed and we have no plan to change that.  
+> * Our build process will change in the future and become more complex and custom, making it likely that downstream source packages will break.  
+> * To avoid being on the hook for supporting downstream breakage that we didn’t cause and don’t have the power to fix, we are asking downstream source packagers to not use the Dagger brand.  
+> * There is no “legal minefield”, just a straightforward combination of strict trademark policy + permissive copyright.  
 
 ## Quick Start
 
@@ -59,11 +72,11 @@ dagger core container from --address=alpine file --path=/etc/os-release contents
 
 ### Installation Methods Explained
 
-- **`nix profile install .`** - Installs Dagger to your user profile (`~/.nix-profile/`), making it permanently available in your `$PATH`. After installation, you can run `dagger` from anywhere.
+* **`nix profile install .`** - Installs Dagger to your user profile (`~/.nix-profile/`), making it permanently available in your `$PATH`. After installation, you can run `dagger` from anywhere.
 
-- **`nix run .`** - Runs Dagger once without installing. Good for testing or occasional use.
+* **`nix run .`** - Runs Dagger once without installing. Good for testing or occasional use.
 
-- **`./result/bin/dagger`** - Uses the build result directly. The `result` symlink points to the built package in the Nix store.
+* **`./result/bin/dagger`** - Uses the build result directly. The `result` symlink points to the built package in the Nix store.
 
 ### Managing Profile Packages
 
@@ -146,10 +159,10 @@ export HOME=$TMPDIR
 
 Key settings in the flake:
 
-- `doCheck = false` - Disables Go tests
-- `checkPhase = ""` - Explicitly disables check phase
-- `vendorHash` - Pre-computed hash of Go dependencies
-- `postPatch` - Patches Go version in go.mod
+* `doCheck = false` - Disables Go tests
+* `checkPhase = ""` - Explicitly disables check phase
+* `vendorHash` - Pre-computed hash of Go dependencies
+* `postPatch` - Patches Go version in go.mod
 
 ## Development
 
