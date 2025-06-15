@@ -7,7 +7,8 @@ A Nix flake that builds Dagger from source using Go modules.
 ## Quick Start
 
 ```bash
-git clone <your-repo>
+# gh is the github client
+gh clone 66-24/flake-dagger
 cd flake-dagger
 nix build
 ./result/bin/dagger version
