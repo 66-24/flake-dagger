@@ -1,8 +1,15 @@
 # Dagger Nix Flake
 
 Nix flake to build and install the Dagger CLI (`cmd/dagger`) as a reproducible binary.
+This flake builds Dagger from source using Go modules.
 
-A Nix flake that builds Dagger from source using Go modules.
+![Agents](./dagger-agent.avif)
+
+## What is dagger
+
+[![What is Dagger](./dagger-logo.png)](https://dagger.io)
+
+> Define software delivery workflows and dev environments with reusable components — including LLMs — and run them anywhere. Built by the creators of Docker. (Solomon Hyke)
 
 ## Quick Start
 
@@ -26,6 +33,28 @@ nix run .
 
 # Or use the build result directly
 ./result/bin/dagger version
+```
+
+## Using Dagger
+
+Start the engine `dagger-engine.dev` if not already running
+
+```bash
+docker ps | grep --color -Po " dagger.*\.dev"
+```
+
+```bash
+ docker run --rm \
+  --name dagger-engine.dev \
+  --privileged \
+  -v /var/lib/dagger \
+  registry.dagger.io/engine:v0.18.10
+```
+
+### Test the engine
+
+```bash
+dagger core container from --address=alpine file --path=/etc/os-release contents
 ```
 
 ### Installation Methods Explained
